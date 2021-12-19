@@ -47,14 +47,17 @@ function score(random, userChoose, computerChoose) {
 
 function animate(r, u, c) {
 		let tails = document.querySelector('.tails');
-		let heads = document.querySelector('.heads');
-		tails.classList.add('active');
-	 heads.classList.add('active');
+	 	let heads = document.querySelector('.heads');
+  tails.classList.toggle('active');
+ 	 heads.classList.toggle('active');
 		tails.addEventListener('animationend', () => {
-				tails.classList.remove('active');
-				heads.classList.remove('active');
-				score(r, u, c);
-		})
+		console.log(tails.classList.contains('acitve'))
+		tails.classList.remove('active');
+		  	heads.classList.remove('active');
+					score(r, u, c);
+				
+		})	
+
 }
 
 
@@ -78,14 +81,14 @@ buttons.addEventListener('click', (e) => {
 			if (e.target.dataset.head)	{
 					userSelection = heads;
 					computerSelection = tails;	
-					animate(randomNumber, userSelection, computerSelection);
+		//			animate(randomNumber, userSelection, computerSelection);
 			//1 is heads and 0 is tails line 8 and 9
 			} else if (e.target.dataset.tail) {
 				userSelection = tails;
-				computSelection = heads;
-				animate(randomNumber, userSelection, computerSelection);
+				computSelection = heads;			
 			}
 //animate();	
+	animate(randomNumber, userSelection, computerSelection);
 
 	//call the score function here and add the userSelection and computerSelection
 		//	score(randomNumber, userSelection, computerSelection);
