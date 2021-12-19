@@ -8,6 +8,9 @@ let computerScore = 0;
 let heads = 1;
 let tails = 0;
 
+let p = document.createElement('p');
+ 
+ 
 //this will change according to the random number
 function headsAndTails(random) {
 		if (random === 1) {
@@ -39,43 +42,53 @@ function score(random, userChoose, computerChoose) {
 				compOutput.textContent = `Computer: ${computerScore}`;
 		}
 		//calling this function here so it won't get delay showing the heads and tails
-		headsAndTails(random)
+		headsAndTails(random);
 }
+
+function animate(r, u, c) {
+		let tails = document.querySelector('.tails');
+		let heads = document.querySelector('.heads');
+		tails.classList.add('active');
+	 heads.classList.add('active');
+		tails.addEventListener('animationend', () => {
+				tails.classList.remove('active');
+				heads.classList.remove('active');
+				score(r, u, c);
+		})
+}
+
 
 function winner() {
-}
-
-function animate(random, userChoose, computerChoose) {
-	let tails = document.querySelector('.tails');
-//		let heads = document.querySelector('.heads');
-	//	tails.classList.add('active');
-//		heads.classList.add('active');
-tails.classList.add('active')
-
-tails.addEventListener('animationend', () => {
-		userChoose = heads;
-		computerChoose = tails;
-		score(randomn, userChoosep, computerChoosep);
-})
+		if (userScore === 3) {		
+				p.innerHTML		= `You Won!!!`
+		} else if (computerScore === 3) {
+				p.innerText = 'Computer won!'
+		}
+		document.querySelector('.container').append(p);
 }
 
 buttons.addEventListener('click', (e) => {
 		let userSelection;
 		let computerSelection;
 		
-	//this will generate a new number everytime we call on click function, math.round will round the number to nearest integer
+		//this will generate a new number everytime we call on click function, math.round will round the number to nearest integer
 	let randomNumber = Math.round(Math.random()); //0 or 1
-		console.log(randomNumber);
-		
-			if (e.target.dataset.head) {
+		console.log(randomNumber)	
+			
+			if (e.target.dataset.head)	{
+					userSelection = heads;
+					computerSelection = tails;	
 					animate(randomNumber, userSelection, computerSelection);
-					
-					//1 is heads and 0 is tails line 8 and 9
+			//1 is heads and 0 is tails line 8 and 9
 			} else if (e.target.dataset.tail) {
 				userSelection = tails;
-				computerSelection = heads;
+				computSelection = heads;
+				animate(randomNumber, userSelection, computerSelection);
 			}
-			
-	//call the score function here and add the userSelection and computerSelection as parameter	
+//animate();	
+
+	//call the score function here and add the userSelection and computerSelection
+		//	score(randomNumber, userSelection, computerSelection);
+			winner()
 		})
 

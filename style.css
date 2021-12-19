@@ -80,20 +80,13 @@ button {
   align-items: center;
 }
 
-.tails.active{
+/*.coin.active {
 		animation-duration: 500ms;
   animation-name: upAndRotate;
   animation-iteration-count: 1;
   animation-delay: 1s;
-  animation-direction: forwards;
-}
-
-/*.coin .active {
-		animation-duration: 500ms;
-  animation-name: upAndRotate;
-  animation-iteration-count: 1;
-  animation-delay: 1s;
-  animation-direction: forwards;
+  animation-direction: alternate;
+    
 }*/
 
 
@@ -104,17 +97,26 @@ button {
 		height: 5em;
 		border-radius: 100%;
 		background: wheat;
- /* animation-duration: 500ms;
+  animation-duration: 500ms;
   animation-name: upAndRotate;
   animation-iteration-count: 1;
   animation-delay: 2s;
-  animation-direction: forwards;*/
+  animation-direction: forwards;
   position: absolute;
   text-align: center;
   	display: flex;
   justify-content: center;  	
   align-items: center;
 }
+
+/*.tails.active, heads.active{
+		animation-duration: 500ms;
+  animation-name: upAndRotate;
+  animation-iteration-count: 1;
+  animation-delay: 1s;
+  animation-direction: forwards;
+}*/
+
 
 .heads {
 		color: red;
